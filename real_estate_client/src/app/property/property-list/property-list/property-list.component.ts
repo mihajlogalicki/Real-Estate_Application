@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { take } from 'rxjs';
 import { HousingService } from '../../../services/housing.service';
+import { IProperty } from '../IProperty.interface';
 
 @Component({
   selector: 'app-property-list',
@@ -10,7 +11,7 @@ import { HousingService } from '../../../services/housing.service';
 })
 export class PropertyListComponent {
 
-  properties: Array<any>;
+  properties: IProperty[];
 
   constructor(private housingService: HousingService){}
 
@@ -30,5 +31,5 @@ export class PropertyListComponent {
         }
     })
   }
-
+  
 }
