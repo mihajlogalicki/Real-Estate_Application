@@ -1,56 +1,65 @@
 [
     {
       "Id": 1,
+      "Type": 2,
       "Name": "Sunset Ridge Villa",
-      "Type": "Villa",
-      "Price": 700000
+      "Category": "Villa",
+      "Price": 700000,
+      "Image": "prop-2"
     },
     {
       "Id": 2,
+      "Type": 2,
       "Name": "The Summit House",
-      "Type": "House",
-      "Price": 90000
+      "Category": "House",
+      "Price": 90000,
+      "Image": "prop-1"
     },
     {
       "Id": 3,
+      "Type": 2,
       "Name": "Ocean Breeze Villa",
-      "Type": "Villa",
-      "Price": 450000
+      "Category": "Villa",
+      "Price": 450000,
+      "Image": "prop-3"
     },
     {
       "Id": 4,
+      "Type": 1,
       "Name": "Bluebell Bungalow",
-      "Type": "Bungalow",
-      "Price": 50000
+      "Category": "Bungalow",
+      "Price": 50000,
+      "Image": "prop-7"
     },
     {
       "Id": 5,
+      "Type": 2,
       "Name": "Pinehill Residence",
-      "Type": "Residence",
-      "Price": 900000
-    },
-    {
-      "Id": 6,
-      "Name": "Silverleaf Residence",
-      "Type": "House",
-      "Price": 250000
-    },
-    {
-      "Id": 7,
-      "Name": "Stonegate House",
-      "Type": "House",
-      "Price": 100000
+      "Category": "Residence",
+      "Price": 900000,
+      "Image": "prop-5"
     },
     {
       "Id": 8,
+      "Type": 2,
       "Name": "Villa Toscana",
-      "Type": "Villa",
-      "Price": 150000
+      "Category": "Villa",
+      "Price": 150000,
+      "Image": "prop-6"
     },
     {
-      "Id": 8,
+      "Id": 9,
+      "Type": 1,
       "Name": "The Lavender Lane House",
-      "Type": "House",
-      "Price": 60000
+      "Category": "House",
+      "Price": 60000,
+      "Image": "prop-4"
+    },
+    {
+      "Id": 10,
+      "Type": 2,
+      "Name": "Miami, FL House",
+      "Category": "House",
+      "Price": 111000
     }
 ]

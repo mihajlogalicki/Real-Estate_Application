@@ -1,11 +1,16 @@
 
  <div class="card">
     <div class="card-img-wrapper">
-        <img class="card-img-top" src="assets/default.jpg">
+        <img *ngIf="property.Image; else defaultImage" class="card-img-top" src="assets/{{property.Image}}.png">
+
+        <ng-template #defaultImage>
+            <img class="card-img-top" src="assets/default.jpg">
+        </ng-template>
+
         <ul class="list-inline text-center member-icons animate">
             <li class="list-inline-item">
                 <button class="btn btn-primary">
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i routerLink="/property-detail/{{property.Id}}" class="fa-solid fa-pen-to-square"></i>
                 </button>
             </li>
             <li class="list-inline-item">
@@ -17,7 +22,7 @@
     </div>
     <div class="card-body p-2">
         <h2> {{ property.Name }} </h2> 
-        <h3> {{ property.Type }} </h3> 
+        <h3> {{ property.Category }} </h3> 
         <h4> {{ property.Price }} </h4> 
     </div>
  </div>
