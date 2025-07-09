@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +10,10 @@ import { Router } from '@angular/router';
 })
 export class AddPropertyComponent {
 
+  @ViewChild('Form') groupedFormControl : NgForm;
   constructor(private router: Router){}
 
-  back(){
-    this.router.navigate(['/']);
+  Save(){
+    console.log(this.groupedFormControl);
   }
 }

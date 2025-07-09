@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { PropertyCardComponent } from "./property/property-card/property-card.component";
 import { PropertyListComponent } from './property/property-list/property-list/property-list.component';
@@ -25,7 +26,8 @@ import { ErrorPageComponent } from './error-page/error-page/error-page.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
 ],
   providers: [
     provideHttpClient(),
