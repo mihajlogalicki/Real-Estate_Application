@@ -1,39 +1,39 @@
-<div class="card">
+<div class="card col-6 m-auto">
     <div class="card-header">
         Add New Property
     </div>
-    <div class="card-body">
-        <form (ngSubmit)='Save()' #Form="ngForm">
-            <div class="form-group col-12">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" #prop_name="ngModel" ngModel name="prop_name" required minlength="5">
-                <span *ngIf="!prop_name.valid && prop_name.touched" class="error-block">
-                    <span *ngIf="prop_name.errors['required']">Name is mandatory field</span>
-                    <span *ngIf="prop_name.errors['minlength']">Name must be at least 5 characters long</span>
-                </span>
-            </div>
-
-            <div class="form-group col-12">
-                <label for="type">Type</label>
-                <input type="text" class="form-control" #prop_type="ngModel" ngModel name="prop_type" required minlength="5">
-                <span *ngIf="!prop_type.valid && prop_type.touched" class="error-block">
-                    <span *ngIf="prop_type.errors['required']">Type is mandatory field</span>
-                    <span *ngIf="prop_type.errors['minlength']">Type must be at least 5 characters long</span>
-                </span>
-            </div>
-
-            <div class="form-group col-12">
-                <label for="price">Price</label>
-                <input type="number" class="form-control" #prop_price="ngModel" ngModel name="prop_price" required>
-                <span *ngIf="!prop_price.valid && prop_price.touched" class="error-block">
-                    <span *ngIf="prop_price.errors['required']">Price is mandatory field</span>
-                </span>
-            </div>
-
-            <div class="form-group col-12 mt-2">
-                <button  type="submit" class="btn btn-primary me-2">Save</button>
-                <button type="reset" class="btn btn-primary">Cancel</button>
-            </div>
-        </form>
+        <div class="card-body">
+            <form (ngSubmit)='Save()' #Form="ngForm">
+                <div class="form-group col-12">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" #prop_name="ngModel" ngModel name="prop_name" required minlength="5">
+                    <span *ngIf="!prop_name.valid && prop_name.touched" class="error-block">
+                        <span *ngIf="prop_name.errors['required']">Name is mandatory field</span>
+                        <span *ngIf="prop_name.errors['minlength']">Name must be at least 5 characters long</span>
+                    </span>
+                </div>
+    
+                <div class="form-group col-12">
+                    <label for="type">Type</label>
+                    <input type="text" class="form-control" #prop_type="ngModel" ngModel name="prop_type" required minlength="5">
+                    <span *ngIf="!prop_type.valid && prop_type.touched" class="error-block">
+                        <span *ngIf="prop_type.errors['required']">Type is mandatory field</span>
+                        <span *ngIf="prop_type.errors['minlength']">Type must be at least 5 characters long</span>
+                    </span>
+                </div>
+    
+                <div class="form-group col-12">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" #prop_price="ngModel" ngModel name="prop_price" required>
+                    <span *ngIf="!prop_price.valid && prop_price.touched" class="error-block">
+                        <span *ngIf="prop_price.errors['required']">Price is mandatory field</span>
+                    </span>
+                </div>
+    
+                <div class="form-group col-12 mt-2">
+                    <button  type="submit" class="btn btn-primary me-2">Save</button>
+                    <button type="reset" class="btn btn-primary">Cancel</button>
+                </div>
+            </form>
     </div>
 </div>
