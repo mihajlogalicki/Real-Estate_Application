@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user-service';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-user-register',
@@ -10,8 +12,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class UserRegisterComponent implements OnInit {
 
   public registrationForm : FormGroup;
+  public isRegisterFormSubmitted: boolean;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private userService: UserService){}
 
   ngOnInit() {
     this.initRegistrationForm();
@@ -31,8 +34,21 @@ export class UserRegisterComponent implements OnInit {
     return formGroup.get('password').value == formGroup.get('confirmPassword').value ? null : { notmatched: true };
   }
 
-  Register(){
-    console.log(this.registrationForm);
+  registerUser(){
+    this.isRegisterFormSubmitted = true;
+    if(this.registrationForm.valid) {
+
+        const userDto : User = {
+          userName: this.username.value,
+          password: this.password.value,
+          email: this.email.value,
+          mobile: this.mobile.value
+        };
+
+        this.userService.addUser(userDto);
+        this.registrationForm.reset();
+        this.isRegisterFormSubmitted = false;
+    }
   }
 
   // getters for form controls
@@ -52,7 +68,7 @@ export class UserRegisterComponent implements OnInit {
     return this.registrationForm.get('mobile') as FormControl;
   }
 
-  
+
  /* ~ Old and not efficient form initialization using Form Group instance
   oldFormInit(){
     this.registrationForm = new FormGroup({

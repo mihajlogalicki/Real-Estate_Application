@@ -16,6 +16,7 @@ import { UserRegisterComponent } from './user/register/user-register/user-regist
 // providers
 import { HousingService } from './services/housing.service';
 import { provideHttpClient } from '@angular/common/http';
+import { UserService } from './services/user-service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { provideHttpClient } from '@angular/common/http';
 ],
   providers: [
     provideHttpClient(),
-    HousingService
+    HousingService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

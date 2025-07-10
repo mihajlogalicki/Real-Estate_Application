@@ -5,12 +5,12 @@
         Register
       </div>
       <div class="card-body">
-        <form [formGroup]="registrationForm" (ngSubmit)="Register()">
+        <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
           <div class="form-group col-12">
               <label for="name" class="form-label">Name</label>
               <input type="text" class="form-control" formControlName="userName">
 
-              <span class="error-block" *ngIf="!username.valid && username.touched">
+              <span class="error-block" *ngIf="!username.valid && (username.touched || isRegisterFormSubmitted)">
                 <span *ngIf="username.hasError('required')">
                     Username is mandatory field
                 </span>
@@ -24,7 +24,7 @@
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="email">
 
-            <span class="error-block" *ngIf="!email.valid && email.touched">
+            <span class="error-block" *ngIf="!email.valid && (email.touched || isRegisterFormSubmitted)">
                 <span *ngIf="email.hasError('required')">
                     Email is mandatory field
                 </span>
@@ -38,7 +38,7 @@
             <label for="passwrod" class="form-label">Password</label>
             <input type="text" class="form-control" formControlName="password">
 
-            <span class="error-block" *ngIf="!password.valid && password.touched">
+            <span class="error-block" *ngIf="!password.valid && (password.touched || isRegisterFormSubmitted)">
                 <span *ngIf="password.hasError('required')">
                     Password is mandatory field
                 </span>
@@ -52,7 +52,7 @@
             <label for="cpassword" class="form-label">Confirm Password</label>
             <input type="text" class="form-control" formControlName="confirmPassword">
 
-            <span class="error-block"*ngIf="confirmPassword.hasError('required') && confirmPassword.touched">
+            <span class="error-block"*ngIf="confirmPassword.hasError('required') && (confirmPassword.touched || isRegisterFormSubmitted)">
                 Confirm Password is mandatory field                
             </span>
 
@@ -65,7 +65,7 @@
             <label for="mobile" class="form-label">Mobile</label>
             <input type="text" class="form-control" formControlName="mobile">
 
-            <span class="error-block" *ngIf="!mobile.valid && mobile.touched">
+            <span class="error-block" *ngIf="!mobile.valid && (mobile.touched || isRegisterFormSubmitted)">
                 <span *ngIf="mobile.hasError('required')">
                     Mobile is mandatory field
                 </span>
