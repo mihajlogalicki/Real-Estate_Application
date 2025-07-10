@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-register',
@@ -11,16 +11,20 @@ export class UserRegisterComponent implements OnInit {
 
   public registrationForm : FormGroup;
 
-  constructor(){}
+  constructor(private formBuilder: FormBuilder){}
 
   ngOnInit() {
-    this.registrationForm = new FormGroup({
-        userName: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-        email: new FormControl(null, [Validators.required, Validators.email]),
-        password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-        confirmPassword: new FormControl(null, [Validators.required]),
-        mobile: new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
-    }, this.passwordMatchingValidator);
+    this.initRegistrationForm();
+  }
+
+  initRegistrationForm(){
+    this.registrationForm = this.formBuilder.group({
+      userName: [null, [Validators.required, Validators.minLength(6)]],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      confirmPassword: [null, Validators.required],
+      mobile: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+    }, {validators: this.passwordMatchingValidator})
   }
 
   passwordMatchingValidator(formGroup: FormGroup) : Validators {
@@ -30,7 +34,6 @@ export class UserRegisterComponent implements OnInit {
   Register(){
     console.log(this.registrationForm);
   }
-
 
   // getters for form controls
   get username() {
@@ -48,4 +51,17 @@ export class UserRegisterComponent implements OnInit {
   get mobile() {
     return this.registrationForm.get('mobile') as FormControl;
   }
+
+  
+ /* ~ Old and not efficient form initialization using Form Group instance
+  oldFormInit(){
+    this.registrationForm = new FormGroup({
+        userName: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+        email: new FormControl(null, [Validators.required, Validators.email]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+        confirmPassword: new FormControl(null, [Validators.required]),
+        mobile: new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
+    }, this.passwordMatchingValidator);
+  }
+  */
 }
