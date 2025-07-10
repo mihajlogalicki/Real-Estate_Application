@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-property-detail',
@@ -11,12 +12,14 @@ export class PropertyDetailComponent {
 
   public propertyId: number;
 
-  constructor(private route: ActivatedRoute, private router: Router){}
+  constructor(private activatedRoute: ActivatedRoute, private router: Router){}
 
-  ngOnInit(){
-    this.propertyId = Number(this.route.snapshot.params['id']);
+  ngOnInit() {
+    this.propertyId = Number(this.activatedRoute.snapshot.params['id']);
 
-    this.route.params.subscribe(
+    this.activatedRoute.params
+    .pipe(take(1))
+    .subscribe(
       (params) => {
         this.propertyId = Number(params['id']);
       }
