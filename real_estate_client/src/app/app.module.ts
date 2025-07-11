@@ -17,6 +17,17 @@ import { UserRegisterComponent } from './user/register/user-register/user-regist
 import { HousingService } from './services/housing.service';
 import { provideHttpClient } from '@angular/common/http';
 import { UserService } from './services/user-service';
+import { MessageService } from 'primeng/api';
+
+// PrimeNG config
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+// PrimeNG UI components
+import { ButtonModule } from 'primeng/button';
+import { ToastModule  } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
@@ -34,12 +45,21 @@ import { UserService } from './services/user-service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule,
+    ToastModule
 ],
   providers: [
     provideHttpClient(),
     HousingService,
-    UserService
+    UserService,
+    MessageService,
+    provideAnimationsAsync(),
+    providePrimeNG({
+        theme: {
+            preset: Aura
+        },
+    })
   ],
   bootstrap: [AppComponent]
 })

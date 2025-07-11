@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user-service';
 import { User } from '../../../model/user';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-user-register',
@@ -14,7 +15,7 @@ export class UserRegisterComponent implements OnInit {
   public registrationForm : FormGroup;
   public isRegisterFormSubmitted: boolean;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService){}
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private messageService: MessageService){}
 
   ngOnInit() {
     this.initRegistrationForm();
@@ -46,8 +47,12 @@ export class UserRegisterComponent implements OnInit {
         };
 
         this.userService.addUser(userDto);
+        this.messageService.add({ severity: 'success', summary: 'Registration Successful!', life: 4000});
         this.registrationForm.reset();
         this.isRegisterFormSubmitted = false;
+    } 
+    else {
+      this.messageService.add({severity: 'error', summary: 'Registration Failed!', life: 4000});
     }
   }
 
