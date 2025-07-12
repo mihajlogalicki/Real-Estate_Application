@@ -27,6 +27,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 // PrimeNG UI components
 import { ButtonModule } from 'primeng/button';
 import { ToastModule  } from 'primeng/toast';
+import { Menu } from 'primeng/menu';
+import { MenuModule } from 'primeng/menu';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { ToastModule  } from 'primeng/toast';
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    MenuModule,
+    Menu
 ],
   providers: [
     provideHttpClient(),
