@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Menu } from 'primeng/menu';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,24 +16,28 @@ export class NavBarComponent {
    isUserLoggedIn() {
       this.loggedUser = localStorage.getItem('token');
       if(!!this.loggedUser){
-        this.items = [
-          { 
-             label: 'View Dashboard',
-             icon: 'fa-solid fa-dashboard'
-          },
-          { 
-            label: 'My Profile',
-            icon: 'fa-solid fa-user'
-          },
-          { 
-            label: 'Sign Out', 
-            icon: 'fa-solid fa-right-from-bracket', 
-            command: () => {
-              localStorage.removeItem('token');
-          }
-          }
-      ];
       }
       return this.loggedUser;
-   } 
+   }
+   
+   menuActions(menu: Menu, event: Event){
+      menu.model = [] as MenuItem[];
+      menu.model.push(
+      { 
+          label: 'View Dashboard',
+          icon: 'fa-solid fa-dashboard'
+      },
+      { 
+        label: 'My Profile',
+        icon: 'fa-solid fa-user'
+      },
+      { 
+        label: 'Sign Out', 
+        icon: 'fa-solid fa-right-from-bracket', 
+        command: () => {
+          localStorage.removeItem('token');
+        }
+      })
+      menu.toggle(event);
+   }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../model/user';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -17,7 +18,8 @@ export class UserLoginComponent {
   constructor(
     private formBuilder: FormBuilder, 
     private authService: AuthService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private route: Router
   ) {}
 
   ngOnInit(){
@@ -34,7 +36,7 @@ export class UserLoginComponent {
     if(userStorage) {
         localStorage.setItem('token', userStorage.userName);
         this.messageService.add({ severity: 'success', summary: 'Login Successful!', life: 4000});
-        this.loginForm.reset();
+        this.route.navigate(['']);
     } else {
       this.messageService.add({ severity: 'error', summary: 'Login Failed!', life: 4000});
     }
