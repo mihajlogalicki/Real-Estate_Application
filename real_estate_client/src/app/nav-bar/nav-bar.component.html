@@ -26,9 +26,9 @@
             </li>
             <li *ngIf="isUserLoggedIn()" class="nav-item">
               <p-menu #menu [model]="items" [popup]="true" />
-              <p-button (click)="menuActions(menu, $event)" class="btn btn-dark">
-                <i class="fa-solid fa-grip-lines-vertical"></i>
-              </p-button>
+              <button (click)="menu.toggle($event)" class="btn btn-dark">
+                <i class="fa-solid fa-grip-vertical"></i>
+              </button>
             </li>
           </ul>
         </div>
