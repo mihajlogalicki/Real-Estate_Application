@@ -4,3 +4,16 @@
 .error-block {
     color: red;
 }
+.photo-control {
+    min-height: 300px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px dashed blue;
+    margin: 2px;
+}
+.card-header {
+    color: #fff;
+    background-color: #10b981;
+    border-radius: 3px;
+    height: 36px;
+}

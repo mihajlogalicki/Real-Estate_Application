@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { take } from 'rxjs';
 import { HousingService } from '../../../services/housing.service';
-import { IProperty } from '../IProperty.interface';
 import { ActivatedRoute } from '@angular/router';
 import { ePropertyType } from './ePropertyType';
+import { IPropertyBase } from '../../../model/IPropertyBase';
 
 @Component({
   selector: 'app-property-list',
@@ -14,7 +14,7 @@ import { ePropertyType } from './ePropertyType';
 export class PropertyListComponent {
 
   propertyType: ePropertyType = ePropertyType.Sell;
-  properties: IProperty[];
+  properties: IPropertyBase[];
 
   constructor(private housingService: HousingService, private activatedRoute: ActivatedRoute){}
 

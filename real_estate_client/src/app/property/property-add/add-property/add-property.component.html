@@ -1,39 +1,189 @@
-<div class="card col-6 m-auto">
-    <div class="card-header">
-        Add New Property
-    </div>
-        <div class="card-body">
-            <form (ngSubmit)='Save()' #Form="ngForm">
-                <div class="form-group col-12">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" #prop_name="ngModel" ngModel name="prop_name" required minlength="5">
-                    <span *ngIf="!prop_name.valid && prop_name.touched" class="error-block">
-                        <span *ngIf="prop_name.errors['required']">Name is mandatory field</span>
-                        <span *ngIf="prop_name.errors['minlength']">Name must be at least 5 characters long</span>
-                    </span>
-                </div>
-    
-                <div class="form-group col-12">
-                    <label for="type">Type</label>
-                    <input type="text" class="form-control" #prop_type="ngModel" ngModel name="prop_type" required minlength="5">
-                    <span *ngIf="!prop_type.valid && prop_type.touched" class="error-block">
-                        <span *ngIf="prop_type.errors['required']">Type is mandatory field</span>
-                        <span *ngIf="prop_type.errors['minlength']">Type must be at least 5 characters long</span>
-                    </span>
-                </div>
-    
-                <div class="form-group col-12">
-                    <label for="price">Price</label>
-                    <input type="number" class="form-control" #prop_price="ngModel" ngModel name="prop_price" required>
-                    <span *ngIf="!prop_price.valid && prop_price.touched" class="error-block">
-                        <span *ngIf="prop_price.errors['required']">Price is mandatory field</span>
-                    </span>
-                </div>
-    
-                <div class="form-group col-12 mt-2">
-                    <button  type="submit" class="btn btn-primary me-2">Save</button>
-                    <button type="reset" class="btn btn-primary">Cancel</button>
-                </div>
+<div class="row">
+    <div class="col-8 m-auto p-0 shadow-lg bg-white">
+        <div class="card-header">
+           <h4>Add Your Property</h4>
+        </div>
+
+        <p-tabs [value]="currentTab">
+            <p-tablist>
+                <p-tab [value]="0">Basic Info</p-tab>
+                <p-tab [value]="1">Pricing and Area</p-tab>
+                <p-tab [value]="2">Address</p-tab>
+                <p-tab [value]="3">Other Details</p-tab>
+                <p-tab [value]="4">Photos</p-tab>
+            </p-tablist>
+
+            <p-tabpanels>
+                <div class="card-body">
+                <form (ngSubmit)='Save()' #Form="ngForm">
+                    <p-tabpanel [value]="0" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
+                        <div class="form-group">
+                            <p-radiobutton value="1" ngModel name="RealEstateType" [(ngModel)]="propertyView.RealEstateType" required/>
+                            <label for="sell" class="me-2 ">Sell</label>
+
+                            <p-radiobutton value="2" ngModel name="RealEstateType" [(ngModel)]="propertyView.RealEstateType" required/>
+                            <label  for="rent">Rent</label>
+                        </div>                
+
+                        <div class="form-group mt-3">
+                            <div>
+                                <label>In Building/Society/Project</label>
+                            </div>                     
+                            <input type="text" class="form-control" #prop_name="ngModel" ngModel name="prop_name" [(ngModel)]="propertyView.Name" required minlength="5">
+                            <span *ngIf="!prop_name.valid && prop_name.touched" class="error-block">
+                                <span *ngIf="prop_name.errors['required']">Name is mandatory field</span>
+                                <span *ngIf="prop_name.errors['minlength']">Name must be at least 5 characters long</span>
+                            </span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <div>
+                                <label>City</label>
+                            </div>                     
+                            <input type="text" class="form-control" ngModel name="city" [(ngModel)]="propertyView.City" required>
+                        </div>
+        
+                        <div class="form-group mt-3">
+                            <div>
+                                <label>Property Type</label>
+                            </div>
+                            <div *ngFor="let property of propertyTypes" class="d-inline me-2">                      
+                                <p-radiobutton name="PropertyType" [value]="property" [(ngModel)]="propertyView.PropertyType" required></p-radiobutton>
+                                <label> {{ property }}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <div>
+                                <label for="type">Furnishing Type</label>
+                            </div>                  
+                            <div *ngFor="let furnishType of furnishTypes" class="d-inline me-2">
+                                <p-radiobutton name="FurnishingType" [value]="furnishType" [(ngModel)]="propertyView.FurnishingType" required></p-radiobutton>
+                                <label> {{ furnishType }}</label>
+                            </div>
+                        </div>
+
+                        <!--
+                        <div class="form-group mt-3">
+                            <label>Price</label>
+                            <input type="number" class="form-control" #prop_price="ngModel" ngModel name="prop_price" required>
+                            <span *ngIf="!prop_price.valid && prop_price.touched" class="error-block">
+                                <span *ngIf="prop_price.errors['required']">Price is mandatory field</span>
+                            </span>
+                        </div>
+                        -->
+
+                        <div class="form-group mt-3">                                                     
+                            <button [disabled]="!BasicInfo.valid" type="button" class="btn btn-outline-success me-2 btn-sm" (click)="currentTab = 1">Next</button>                    
+                        </div>
+                    </p-tabpanel>
+                    <p-tabpanel [value]="1">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="number" class="form-control" name="Price" [(ngModel)]="propertyView.Price">
+                        </div>
+                        <div class="form-group">
+                            <label>Security</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Maintenance</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Built Area</label>
+                            <input type="text" ngModel name="TotalArea" [(ngModel)]="propertyView.TotalArea" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Carpet Area</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 2">Next</button>
+                        <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 0">Back</button>
+                    </p-tabpanel>
+                    <p-tabpanel [value]="2">
+                        <div class="form-group">
+                            <label>Floor</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Floor</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Landmark</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 3">Next</button>
+                        <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 1">Back</button>
+                    </p-tabpanel>
+                    <p-tabpanel [value]="3">
+                        <div class="form-group">
+                            <div>
+                                <label>Ready to Move</label>
+                            </div>
+                        
+                            <p-radiobutton value="1"   inputId="ingredient1" />
+                            <label class="me-2 ">Yes</label>
+
+                            <p-radiobutton value="2"  inputId="ingredient2" />
+                            <label>No</label>
+                        </div>
+                        <div class="form-group mt-2">
+                            <div>
+                                <label>Possession/Avaialble From</label>
+                            </div>                       
+                            <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" dateFormat="dd/mm/yy" />
+                        </div>
+                        <div class="form-group">
+                            <label>Age of Property</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Gated Community</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Main Entrance</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea type="text" class="form-control" rows="6"></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 4">Next</button>
+                        <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 2">Back</button>
+                    </p-tabpanel>
+                        <p-tabpanel [value]="4">
+                            <div class="photo-control">
+                                <button class="mt-5" type="button">Upload</button> <br>
+                                This is under construction
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-success mt-2 me-2 btn-sm" >Save</button> 
+                            <button type="button" class="btn btn-outline-success mt-2 me-2 btn-sm" (click)="currentTab = 3">Back</button>
+                    </p-tabpanel>
             </form>
+        </div>  
+        </p-tabpanels>
+        </p-tabs>
+    </div>
+    <div class="col-4">
+        <div class="card-header">
+            <h4>Your Property Preview</h4>
+        </div>
+        <div class="shadow-lg p-3 bg-white">
+          <app-property-card 
+            [property]="propertyView"
+            [showIcons]="false">
+          </app-property-card>
+        </div>
     </div>
 </div>

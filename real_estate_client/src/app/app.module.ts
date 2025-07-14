@@ -27,9 +27,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 // PrimeNG UI components
 import { ButtonModule } from 'primeng/button';
 import { ToastModule  } from 'primeng/toast';
-import { Menu } from 'primeng/menu';
 import { MenuModule } from 'primeng/menu';
-
+import { TabsModule } from 'primeng/tabs';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DatePicker } from 'primeng/datepicker';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { MenuModule } from 'primeng/menu';
     ButtonModule,
     ToastModule,
     MenuModule,
-    Menu
+    TabsModule,
+    RadioButtonModule,
+    DatePicker
 ],
   providers: [
     provideHttpClient(),

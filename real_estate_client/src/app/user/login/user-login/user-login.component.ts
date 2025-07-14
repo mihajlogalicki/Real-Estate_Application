@@ -30,7 +30,7 @@ export class UserLoginComponent {
     const user = {
       userName: this.username.value,
       password: this.password.value
-    };
+  };
 
     const userStorage = this.authService.authenticateUser(user);
     if(userStorage) {
