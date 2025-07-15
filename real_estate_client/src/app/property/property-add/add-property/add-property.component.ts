@@ -52,24 +52,25 @@ export class AddPropertyComponent {
       PricingInfo: this.formBuilder.group({
         Price: [null, Validators.required],
         TotalArea: [null, Validators.required],
-        Security:  [null, Validators.required],
-        Maintenance: [null, Validators.required],
-        CarpetArea: [null, Validators.required]
+        Security:  [null],
+        Maintenance: [null],
+        CarpetArea: [null]
       }),
 
       Address: this.formBuilder.group({
-        FloorNo: [null, Validators.required],
-        TotalFloor: [null, Validators.required],
+        FloorNo: [null],
+        TotalFloor: [null],
         Address:  [null, Validators.required],
-        Landmark: [null, Validators.required]
+        Address2:  [null],
+        Landmark: [null]
       }),
 
       OtherDetails: this.formBuilder.group({
         RTM: [null, Validators.required],
-        AOP: [null, Validators.required],
-        Possession: [null, Validators.required],
-        Gated: [null, Validators.required],
-        MainEntrance:  [null, Validators.required],
+        AOP: [null],
+        Possession: [null],
+        Gated: [null],
+        MainEntrance:  [null],
         Description: [null, Validators.required],
       }),
 
@@ -80,9 +81,9 @@ export class AddPropertyComponent {
 
   Save(){
     if(this.addPropertyForm.valid) {
-      this.messageService.add({ severity: 'success', summary: 'Property saved successfully!', life: 4000});
+        this.messageService.add({ severity: 'success', summary: 'Property saved successfully!', life: 4000});
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Property errors during saving!', life: 4000});
+        this.messageService.add({ severity: 'error', summary: 'Property errors during saving!', life: 4000});
     }
   }
 
