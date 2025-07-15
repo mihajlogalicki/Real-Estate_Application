@@ -10,6 +10,12 @@ import { MessageService } from 'primeng/api';
   templateUrl: './add-property.component.html',
   styleUrl: './add-property.component.css'
 })
+/* TODO: 
+    1) Add getters for all form groups and form controls
+    2) Display validation errors for each control (improve using <p-message>)
+    3) Disable clicking on tabs navigation, if entire tab is valid highlight with green backround,
+    all non-filled tabs should have light green color
+*/
 export class AddPropertyComponent {
 
   // @ViewChild('Form') groupedFormControl : NgForm; -> Old, used for Template Driven Form
