@@ -4,7 +4,7 @@ export interface IPropertyBase {
     Price: number;
     PropertyType: number;
     FurnishingType: string;
-    RealEstateType: string;
+    RealEstateType: number;
     Image?: string;
     TotalArea: number;
     City: string;

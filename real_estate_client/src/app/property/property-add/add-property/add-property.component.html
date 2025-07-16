@@ -136,13 +136,12 @@
                             <p-radiobutton value="2" formControlName="RTM"/>
                             <label>No</label>
                         </div>
-                        <!-- value == 1 -->
-                        <div class="form-group mt-1">
+                        <div *ngIf="RTM.value == 1" class="form-group mt-1">
                             <label>Age of Property</label>
                             <input type="number" class="form-control" formControlName="AOP">
                         </div>
                         <!-- value == 2 -->
-                        <div>
+                        <div *ngIf="RTM.value == 2">
                             <div class="form-group mt-2">
                                 <div>
                                     <label>Possession/Avaialble From</label>
