@@ -14,8 +14,6 @@ import { HousingService } from '../../../services/housing.service';
 })
 /* TODO: 
     2) Display validation errors for each control (improve using <p-message>)
-    3) Disable clicking on tabs navigation, if entire tab is valid highlight with green backround,
-    all non-filled tabs should have light green color
 */
 export class AddPropertyComponent {
 

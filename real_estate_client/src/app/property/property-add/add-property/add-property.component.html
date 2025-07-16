@@ -1,16 +1,16 @@
 <p-toast></p-toast>
 <div class="row">
     <div class="col-8 m-auto p-0 shadow-lg bg-white">
-        <div class="card-header">
+        <div class="card-header p-1">
            <h4>Add Your Property</h4>
         </div>
 
         <p-tabs [value]="currentTab">
             <p-tablist>
-                <p-tab [value]="0">Basic Info</p-tab>
-                <p-tab [value]="1">Pricing and Area</p-tab>
-                <p-tab [value]="2">Address</p-tab>
-                <p-tab [value]="3">Other Details</p-tab>
+                <p-tab [ngClass]="{'valid-tab-group': BasicInfoFormGroup.valid}" [value]="0">Basic Info</p-tab>
+                <p-tab [ngClass]="{'valid-tab-group': PricingInfoFormGroup.valid}" [value]="1">Pricing and Area</p-tab>
+                <p-tab [ngClass]="{'valid-tab-group': AddressFormGroup.valid}" [value]="2">Address</p-tab>
+                <p-tab [ngClass]="{'valid-tab-group': OtherDetailsFormGroup.valid}" [value]="3">Other Details</p-tab>
                 <p-tab [value]="4">Photos</p-tab>
             </p-tablist>
 
@@ -35,7 +35,7 @@
                             <input type="text" class="form-control" formControlName="Name" [(ngModel)]="propertyView.Name">
 
                             <div class="error-block" *ngIf="Name.hasError('required') && Name.touched">
-                                <span class="fw-bold">Property Name is required</span>
+                                <p>Property Name is required</p>
                             </div>
                         </div>
 
@@ -80,7 +80,7 @@
                             <input type="number" class="form-control" formControlName="Price" [(ngModel)]="propertyView.Price">
 
                             <div class="error-block" *ngIf="Price.hasError('required') && Price.touched">
-                                <span class="fw-bold">{{RealEstateType.value == 1 ? ' Price' : 'Rent'}} amount is required</span>
+                                <p>{{RealEstateType.value == 1 ? ' Price' : 'Rent'}} amount is required</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -193,7 +193,7 @@
         </p-tabs>
     </div>
     <div class="col-4">
-        <div class="card-header">
+        <div class="card-header p-1">
             <h4>Your Property Preview</h4>
         </div>
         <div class="shadow-lg p-3 bg-white">
