@@ -5,33 +5,33 @@
                 <img src="assets/prop-1.png" class="card-img-top" alt="">
             </div>
             <div class="card-body">
-                <h2 class="card-title">Property Name</h2>
+                <h1 class="card-title">{{property.Name}}</h1>
                 <div>
-                    <strong>Property Type $ 50</strong>
+                    <strong>{{property.PropertyType}}  ${{property.Price}}</strong>
                 </div>
                 <div>
-                   <strong>in Property City</strong>
+                   <strong>in {{property.City}}</strong>
                 </div> <hr>
                 <div>
                     <strong>Total Area: </strong>
-                    Property Total Area m2
+                    {{property.TotalArea}} m2
                 </div>
         
                 <div>
                     <strong>Carpet Area: </strong>
-                    Property Carpet Area m2
+                    {{property.CarpetArea}} m2
                 </div>
                 <div>
                     <strong>Furnishing Type: </strong>
-                    Property Furnishing Type
+                    {{property.FurnishingType}}
                 </div>
-            </div>
-            <div class="card-footer">
+              </div>
+              <div class="card-footer">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Like</button>
-                    <button class="btn btn-success">Message</button>
+                  <button class="btn btn-primary">Like</button>
+                  <button class="btn btn-success">Message</button>
                 </div>
-            </div>
+              </div>
         </div>
     </div>
     <div class="col-sm-8 p-0">
