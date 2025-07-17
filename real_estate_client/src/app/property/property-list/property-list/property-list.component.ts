@@ -34,7 +34,7 @@ export class PropertyListComponent {
             this.properties = data;
             const newProperty = JSON.parse(localStorage.getItem('newProperty'));
 
-            if(newProperty.RealEstateType == this.realEstateType) {
+            if(!!newProperty && newProperty.RealEstateType == this.realEstateType) {
               this.properties = [newProperty, ...this.properties];
             }
            

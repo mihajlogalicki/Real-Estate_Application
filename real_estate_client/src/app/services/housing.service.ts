@@ -12,12 +12,12 @@ export class HousingService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllProperties(propertyType: eRealEstateType) : Observable<IPropertyBase[]> { 
+  getAllProperties(realEstateType: eRealEstateType) : Observable<IPropertyBase[]> { 
     return this.httpClient.get('data/properties.json').pipe(
       map(data => {
         const properties: IPropertyBase[] = [];
         for(const item in data){
-          if(data.hasOwnProperty(item) && data[item].RealEstateType === propertyType){
+          if(data.hasOwnProperty(item) && data[item].RealEstateType === realEstateType){
             properties.push(data[item]);
           }
         }

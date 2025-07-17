@@ -1,7 +1,47 @@
-<p>property-detail works!</p>
-<p>Selected property id  {{propertyId}}</p><br/>
-<button (click)="nextPage()" class="btn btn-primary">Select next page</button><br/>
-
-<button routerLink="/property-detail/1" class="btn btn-primary">1</button>
-<button routerLink="/property-detail/2" class="btn btn-primary">2</button>
-<button routerLink="/property-detail/3" class="btn btn-primary">3</button>
+<div class="row shadow">
+    <div class="col-sm-4 p-0">
+        <div class="card">
+            <div class="card-img-wrapper">
+                <img src="assets/prop-1.png" class="card-img-top" alt="">
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">Property Name</h2>
+                <div>
+                    <strong>Property Type $ 50</strong>
+                </div>
+                <div>
+                   <strong>in Property City</strong>
+                </div> <hr>
+                <div>
+                    <strong>Total Area: </strong>
+                    Property Total Area m2
+                </div>
+        
+                <div>
+                    <strong>Carpet Area: </strong>
+                    Property Carpet Area m2
+                </div>
+                <div>
+                    <strong>Furnishing Type: </strong>
+                    Property Furnishing Type
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Like</button>
+                    <button class="btn btn-success">Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 p-0">
+        <p-tabs [value]="0">
+            <p-tablist>
+                <p-tab [value]="0">Overview</p-tab>
+                <p-tab [value]="1">Address</p-tab>
+                <p-tab [value]="2">Photos</p-tab>
+                <p-tab [value]="4">Contact</p-tab>
+            </p-tablist>
+        </p-tabs>
+    </div>
+</div>

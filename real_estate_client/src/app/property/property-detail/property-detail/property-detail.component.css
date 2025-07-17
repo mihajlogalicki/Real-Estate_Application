@@ -1,0 +1,10 @@
+.card {
+    min-height: 500px;
+}
+.card-img-wrapper img {
+    padding: 10px;
+}
+.card-body .card-title {
+    font-family: fantasy;
+    color: #10b981;;
+}
