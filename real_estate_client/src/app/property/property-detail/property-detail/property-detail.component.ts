@@ -21,13 +21,11 @@ export class PropertyDetailComponent {
     this.propertyId = Number(this.activatedRoute.snapshot.params['id']);
 
     this.activatedRoute.params
-    .pipe(take(1))
     .subscribe(
       (params) => {
         this.propertyId = Number(params['id']);
         
         this.housingService.getProperty(this.propertyId)
-        .pipe(take(1))
         .subscribe({
           next: (property: Property) => {
             this.property = property;
