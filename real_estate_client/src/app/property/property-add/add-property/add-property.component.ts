@@ -13,13 +13,14 @@ import { HousingService } from '../../../services/housing.service';
   styleUrl: './add-property.component.css'
 })
 /* TODO: 
-    2) Display validation errors for each control (improve using <p-message>)
+    1) Display validation errors for each control (improve using <p-message>)
+    2) Remove ngModel for previewing property, use fully reactive form approach
 */
 export class AddPropertyComponent {
 
   // @ViewChild('Form') groupedFormControl : NgForm; -> Old, used for Template Driven Form
   public currentTab : number = 0;
-  public propertyTypes : Array<string> = ['House', 'Villa', 'Apartment'];
+  public propertyTypes : Array<string> = ['House', 'Villa', 'Apartment', 'Building'];
   public furnishingTypes : Array<string> = ['Fully', 'Semi', 'Unfurnished'];
   public mainEntrances : Array<string> = ['East', 'West', 'South', 'North'];
   public addPropertyForm : FormGroup;
@@ -83,8 +84,7 @@ export class AddPropertyComponent {
         Description: [null, Validators.required],
       }),
 
-      Photos: this.formBuilder.group({
-      }),
+      Photos: this.formBuilder.group({}),
     })
   }
 
@@ -104,7 +104,8 @@ export class AddPropertyComponent {
     }
   }
 
-  private prepareData() : void {
+  private prepareData() {
+    this.property.Id = this.housingService.addPropertyId();
     this.property.RealEstateType = this.RealEstateType.value;
     this.property.PropertyType = this.PropertyType.value;
     this.property.Name = this.Name.value;

@@ -26,7 +26,18 @@ export class HousingService {
     );
   }
 
-  addProperty(property : Property) {
+  addProperty(property : Property){
     localStorage.setItem('newProperty', JSON.stringify(property));
+  }
+
+  addPropertyId(){
+    if(localStorage.getItem('Id')){
+        const localStorageId = Number(localStorage.getItem('Id')) + 1; 
+        localStorage.setItem('Id', String(localStorageId));
+        return localStorageId
+    } else {
+      localStorage.setItem('Id', '101');
+      return 101;
+    }
   }
 }
