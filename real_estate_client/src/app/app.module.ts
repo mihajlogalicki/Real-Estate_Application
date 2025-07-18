@@ -32,6 +32,7 @@ import { MenuModule } from 'primeng/menu';
 import { TabsModule } from 'primeng/tabs';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DatePicker } from 'primeng/datepicker';
+import { GalleriaModule } from 'primeng/galleria';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DatePicker } from 'primeng/datepicker';
     MenuModule,
     TabsModule,
     RadioButtonModule,
-    DatePicker
+    DatePicker,
+    GalleriaModule
 ],
   providers: [
     provideHttpClient(),

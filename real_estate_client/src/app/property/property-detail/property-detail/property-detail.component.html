@@ -81,7 +81,18 @@
                         </div>
                     </p-tabpanel>
                     <p-tabpanel [value]="2">
-                        <h1>Photos</h1>
+                            <p-galleria 
+                              [value]="images" 
+                              [showItemNavigators]="true" 
+                              [showIndicators]="false"
+                              [numVisible]="3">
+                                <ng-template #item let-item>
+                                    <img [src]="item.itemImageSrc" class="w-100 d-block" />
+                                </ng-template>
+                                <ng-template #thumbnail let-item>
+                                    <img [src]="item.thumbnailImageSrc" class="w-100 d-block p-2"/>
+                                </ng-template>
+                        </p-galleria>                    
                     </p-tabpanel>
                     <p-tabpanel [value]="3">
                         <h1>Contact Detail</h1>

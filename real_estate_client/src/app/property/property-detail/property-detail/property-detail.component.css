@@ -8,3 +8,6 @@
     font-family: fantasy;
     color: #10b981;;
 }
+.p-galleria-thumbnail-item {
+    overflow-x: unset;
+}
