@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { eRealEstateType } from '../property/property-list/property-list/eRealEstateType';
-import { IPropertyBase } from '../model/IPropertyBase';
 import { Property } from '../model/Property';
 
 @Injectable({
@@ -12,16 +11,23 @@ export class HousingService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProperty(id: number) : Observable<IPropertyBase>{
+  getProperty(id: number) : Observable<Property> {
     return this.getAllProperties().pipe(
-      map(properties => properties.find(prop => prop.Id == id))
-    );
+      map(properties => {
+        const property = properties.find(prop => prop.Id == id);
+        if(!!property) {
+           return property;
+        } else {
+           throw new Error('Property Not Found!');
+        }
+      })
+    )
   }
 
-  getAllProperties(realEstateType?: eRealEstateType) : Observable<IPropertyBase[]> { 
+  getAllProperties(realEstateType?: eRealEstateType) : Observable<Property[]> { 
     return this.httpClient.get('data/properties.json').pipe(
       map(data => {
-        const properties: IPropertyBase[] = [];
+        const properties: Property[] = [];
 
         for(const item in data){
           if(!!realEstateType){

@@ -24,16 +24,13 @@ export class PropertyDetailComponent {
     .subscribe(
       (params) => {
         this.propertyId = Number(params['id']);
-        
-        this.housingService.getProperty(this.propertyId)
-        .subscribe({
-          next: (property: Property) => {
-            this.property = property;
-          },
-          error: () => {
-            console.log('Property does not exists');
-        }
-        })
+
+        this.activatedRoute.data
+        .pipe(take(1))
+        .subscribe(
+          (property: Property) => {
+            this.property = property['property_resolver'];
+          });
       }
     )
   }

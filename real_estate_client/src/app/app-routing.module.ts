@@ -6,14 +6,16 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
 import { ErrorPageComponent } from './error-page/error-page/error-page.component';
 import { UserLoginComponent } from './user/login/user-login/user-login.component';
 import { UserRegisterComponent } from './user/register/user-register/user-register.component';
+import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 
 const routes: Routes = [
   {path: '', component: PropertyListComponent},
   {path: 'add-property', component: AddPropertyComponent},
   {path: 'rent-property', component: PropertyListComponent},
-  {path: 'property-detail/:id', component: PropertyDetailComponent},
+  {path: 'property-detail/:id', component: PropertyDetailComponent, resolve: {property_resolver: PropertyDetailResolverService}},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'user/register', component: UserRegisterComponent},
+  {path: 'property-not-found', component: ErrorPageComponent},
   {path: '**', component: ErrorPageComponent}
 ];
 

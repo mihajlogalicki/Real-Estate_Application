@@ -18,6 +18,7 @@ import { HousingService } from './services/housing.service';
 import { provideHttpClient } from '@angular/common/http';
 import { UserService } from './services/user-service';
 import { MessageService } from 'primeng/api';
+import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 
 // PrimeNG config
 import { providePrimeNG } from 'primeng/config';
@@ -66,7 +67,8 @@ import { DatePicker } from 'primeng/datepicker';
         theme: {
             preset: Aura
         },
-    })
+    }),
+    PropertyDetailResolverService
   ],
   bootstrap: [AppComponent]
 })
