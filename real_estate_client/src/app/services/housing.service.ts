@@ -12,7 +12,7 @@ export class HousingService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProperty(id: number){
+  getProperty(id: number) : Observable<IPropertyBase>{
     return this.getAllProperties().pipe(
       map(properties => properties.find(prop => prop.Id == id))
     );
